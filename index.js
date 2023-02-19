@@ -14,17 +14,17 @@ const bunnyRadio = document.querySelectorAll('input[name="bunny"]')
 const scaleRadio = document.querySelectorAll('input[name="scaleway"]')
 const wrapperBunny = document.querySelector('#wrapperBunny')
 
-let elem = null;
-let elem2 = null;
+let backBlazeStr = null;
+let backBlazeTrs = null;
 
-let bunnyEl = null;
-let bunnyEl2 = null;
+let bunnyStr = null;
+let bunnyTrs = null;
 
-let scalewayEl = null;
-let scalewayEl2 = null;
+let scalewayStr = null;
+let scalewayTrs = null;
 
-let vultrEl = null;
-let vultrEl2 = null;
+let vultrStr = null;
+let vultrTrs = null;
 
 const countStorage = (val1, val2) => {
 const value = (val1 * val2)
@@ -44,36 +44,61 @@ const totalSum = (it1, it2) => {
     }
     return (it1 + it2)
 }
-wrapperBunny.addEventListener('click', e => {
-    if(e.target.value === "HDD") {
-        bunnyEl = countStorage(0.01, e.target.value)
-    } else {
-        bunnyEl = countStorage(0.02, e.target.value)
-    }
-})
+
+const handlePriceOfCompany = (first, second, third, four) => {
+    const arr = [first, second, third, four]
+    const result = arr.map(({textContent}) => Number(textContent.slice(0, textContent.length - 1)))
+    const minValue = Math.min(...result)
+    const maxValue = Math.max(...result)
+    arr.map(({textContent, style}) => {
+        if(Number(textContent.slice(0, textContent.length - 1)) === maxValue) {
+            style.width = "100%"
+            style.backgroundColor = "grey"
+        }
+        else if(Number(textContent.slice(0, textContent.length - 1)) === minValue) {
+            style.backgroundColor = "red"
+            style.width = `${(Number(textContent.slice(0, textContent.length - 1)) * 100 / maxValue)}%`
+        } else if ( Number(textContent.slice(0, textContent.length - 1)) !== minValue || Number(textContent.slice(0, textContent.length - 1)) !== maxValue) {
+            style.width = `${(Number(textContent.slice(0, textContent.length - 1)) * 100 / maxValue)}%`
+        style.backgroundColor = "grey"
+        }
+    })
+}
+
+// wrapperBunny.addEventListener('click', e => {
+//     if(e.target.value === "HDD") {
+//         bunnyStr = countStorage(0.01, e.target.value)
+//     } else {
+//         bunnyStr = countStorage(0.02, e.target.value)
+//     }
+// })
 
 storage.addEventListener('input', e=>{
     storageOutput.textContent = e.target.value
-    elem = countStorage(0.005, e.target.value)
-    bunnyEl = bunnyRadio[0].checked ? countStorage(0.01, e.target.value) : countStorage(0.02, e.target.value)
-    scalewayEl = e.target.value < 75 ? 0 : scaleRadio[0].checked ? countStorage(0.06, (e.target.value - 75)) : countStorage(0.03, (e.target.value - 75))
-    vultrEl = countStorage(0.01, e.target.value)
-    backblazePrice.textContent = totalSum(elem, elem2) < 7 ? "7$" : `${totalSum(elem, elem2)}$`
-    bunnyPrice.textContent = totalSum(bunnyEl, bunnyEl2) > 10 ? "10$" : `${totalSum(bunnyEl, bunnyEl2)}$`
-    scalewayPrice.textContent = `${totalSum(scalewayEl, scalewayEl2)}$`
-    vultrPrice.textContent = totalSum(vultrEl, vultrEl2) < 5 ? "5$" : `${totalSum(vultrEl, vultrEl2)}$`
+    backBlazeStr = countStorage(0.005, e.target.value)
+    bunnyStr = bunnyRadio[0].checked ? countStorage(0.01, e.target.value) : countStorage(0.02, e.target.value)
+    scalewayStr = e.target.value < 75 ? 0 : scaleRadio[0].checked ? countStorage(0.06, (e.target.value - 75)) : countStorage(0.03, (e.target.value - 75))
+    vultrStr = countStorage(0.01, e.target.value)
+    backblazePrice.textContent = totalSum(backBlazeStr, backBlazeTrs) < 7 ? "7$" : `${totalSum(backBlazeStr, backBlazeTrs)}$`
+    bunnyPrice.textContent = totalSum(bunnyStr, bunnyTrs) > 10 ? "10$" : `${totalSum(bunnyStr, bunnyTrs)}$`
+    scalewayPrice.textContent = `${totalSum(scalewayStr, scalewayTrs)}$`
+    vultrPrice.textContent = totalSum(vultrStr, vultrTrs) < 5 ? "5$" : `${totalSum(vultrStr, vultrTrs)}$`
     
+    handlePriceOfCompany(backblazePrice, bunnyPrice, scalewayPrice, vultrPrice)
 })
 
 transfer.addEventListener('input', e=>{
     transferOutput.textContent = e.target.value
-    elem2 = countTransfer(0.01, e.target.value)
-    bunnyEl2 = countStorage(0.01, e.target.value)
-    scalewayEl2 = e.target.value < 75 ? 0 : countStorage(0.02, (e.target.value - 75))
-    vultrEl2 = countStorage(0.01, e.target.value)
-    backblazePrice.textContent = totalSum(elem, elem2) < 7 ? '7$' : `${totalSum(elem, elem2)}$`
-    bunnyPrice.textContent = totalSum(bunnyEl, bunnyEl2) > 10 ? "10$" : `${totalSum(bunnyEl, bunnyEl2)}$`
-    scalewayPrice.textContent = `${totalSum(scalewayEl, scalewayEl2)}$`
-    vultrPrice.textContent = totalSum(vultrEl, vultrEl2) < 5 ? "5$" : `${totalSum(vultrEl, vultrEl2)}$`
+    backBlazeTrs = countTransfer(0.01, e.target.value)
+    bunnyTrs = countStorage(0.01, e.target.value)
+    scalewayTrs = e.target.value < 75 ? 0 : countStorage(0.02, (e.target.value - 75))
+    vultrTrs = countStorage(0.01, e.target.value)
+    backblazePrice.textContent = totalSum(backBlazeStr, backBlazeTrs) < 7 ? '7$' : `${totalSum(backBlazeStr, backBlazeTrs)}$`
+    bunnyPrice.textContent = totalSum(bunnyStr, bunnyTrs) > 10 ? "10$" : `${totalSum(bunnyStr, bunnyTrs)}$`
+    scalewayPrice.textContent = `${totalSum(scalewayStr, scalewayTrs)}$`
+    vultrPrice.textContent = totalSum(vultrStr, vultrTrs) < 5 ? "5$" : `${totalSum(vultrStr, vultrTrs)}$`
+
+    handlePriceOfCompany(backblazePrice, bunnyPrice, scalewayPrice, vultrPrice)
 })
+
 
