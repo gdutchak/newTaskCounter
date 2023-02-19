@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <label>
+        Storage: <span class="outputStorage"></span> GB
+        <input type="range" name="storage" min="0" max="1000" step="1" value="0">
+    </label>
+    <label>
+        Transfer: <span class="outputTransfer"></span> GB
+        <input type="range" name="transfer" min="0" max="1000" step="1" value="0">
+    </label>
+    <ul>
+        <li>
+            <h2 id="backblaze">backblaze</h2>
+            <svg>
+                <use href=""></use>
+            </svg>
+            <p class="backblaze_price"></p>
+        </li>
+        <li>
+            <h2 id="bunny">bunny</h2>
+            <div id="wrapperBunny">
+                <label>
+                    <input type="radio" name="bunny" value="HDD" checked>
+                    HDD
+                </label>
+                <label>
+                    <input type="radio" name="bunny" value="SSD">
+                    SSD
+                </label>
+            </div>
+            <svg>
+                <use href=""></use>
+            </svg>
+            <p class="bunny_price"></p>
+        </li>
+        <li>
+            <h2 id="scaleway">scaleway</h2>
+            <label>
+                <input type="radio" name="scaleway" value="Multi" checked>
+                Multi
+            </label>
+            <label>
+                <input type="radio" name="scaleway" value="Single">
+                Single
+            </label>
+            <svg>
+                <use href=""></use>
+            </svg>
+            <p class="scaleway_price"></p>
+        </li>
+        <li>
+            <h2 id="vultr">vultr</h2>
+            <svg>
+                <use href=""></use>
+            </svg>
+            <p class="vultr_price"></p>
+        </li>
+    </ul>
+    <script src="./index.js"></script>
+</body>
+</html>
