@@ -8,62 +8,80 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <label>
-        Storage: <span class="outputStorage"></span> GB
-        <input type="range" name="storage" min="0" max="1000" step="1" value="0">
-    </label>
-    <label>
-        Transfer: <span class="outputTransfer"></span> GB
-        <input type="range" name="transfer" min="0" max="1000" step="1" value="0">
-    </label>
-    <ul>
-        <li>
-            <h2 id="backblaze">backblaze</h2>
-            <svg width="25" height="25">
-                <use href="./sprite.svg#icon-repair"></use>
-            </svg>
-            <p class="backblaze_price price"></p>
-        </li>
-        <li>
-            <h2 id="bunny">bunny</h2>
-            <div id="wrapperBunny">
-                <label>
-                    <input type="radio" name="bunny" value="HDD" checked>
-                    HDD
-                </label>
-                <label>
-                    <input type="radio" name="bunny" value="SSD">
-                    SSD
-                </label>
-            </div>
-            <svg width="25" height="25">
-                <use href="./sprite.svg#icon-consultation"></use>
-            </svg>
-            <p class="bunny_price price"></p>
-        </li>
-        <li>
-            <h2 id="scaleway">scaleway</h2>
-            <label>
-                <input type="radio" name="scaleway" value="Multi" checked>
-                Multi
+    <div class="container">
+        <div class="wrapper_calc">
+            <label class="label_calc">
+                Storage: <span class="outputStorage">0</span> GB
+                <input type="range" name="storage" min="0" max="1000" step="1" value="0" class="input">
             </label>
-            <label>
-                <input type="radio" name="scaleway" value="Single">
-                Single
+            <label class="label_calc">
+                Transfer: <span class="outputTransfer">0</span> GB
+                <input type="range" name="transfer" min="0" max="1000" step="1" value="0" class="input">
             </label>
-            <svg width="25" height="25">
-                <use href="./sprite.svg#icon-renovation"></use>
-            </svg>
-            <p class="scaleway_price price"></p>
-        </li>
-        <li>
-            <h2 id="vultr">vultr</h2>
-            <svg width="25" height="25">
-                <use href="./sprite.svg#icon-construction"></use>
-            </svg>
-            <p class="vultr_price price"></p>
-        </li>
-    </ul>
+        </div>
+        <div class="container_list">
+            <ul class="list_price">
+                <li class="price backblaze_price"></li>
+                <li class="price bunny_price"></li>
+                <li class="price scaleway_price"></li>
+                <li class="price vultr_price"></li>
+            </ul>
+            <ul class="list">
+                <li class="list_item">
+                    <div class="wrapper">
+                        <h2 class="title">backblaze</h2>
+                    <svg width="25" height="25">
+                        <use href="./sprite.svg#icon-repair"></use>
+                    </svg>
+                    </div>
+                </li>
+                <li class="list_item">
+                    <div class="wrapper">
+                        <h2 class="title">bunny</h2>
+                    <svg width="25" height="25">
+                        <use href="./sprite.svg#icon-consultation"></use>
+                    </svg>
+                    </div>
+                    <div class="wrapperBunny">
+                        <label class="label">
+                            <input type="radio" name="bunny" value="HDD" checked>
+                            HDD
+                        </label>
+                        <label class="label">
+                            <input type="radio" name="bunny" value="SSD">
+                            SSD
+                        </label>
+                    </div>
+                </li>
+                <li class="list_item">
+                    <div class="wrapper">
+                        <h2 class="title">scaleway</h2>
+                    <svg width="25" height="25">
+                        <use href="./sprite.svg#icon-renovation"></use>
+                    </svg>
+                    </div>
+                    <div class="wrapperScaleway">
+                        <label class="label">
+                            <input type="radio" name="scaleway" value="Multi" checked>
+                            Multi
+                        </label>
+                        <label class="label">
+                            <input type="radio" name="scaleway" value="Single">
+                            Single
+                        </label>
+                    </div>
+                </li>
+                <li class="list_item">
+                    <div class="wrapper">
+                        <h2 class="title">vultr</h2>
+                    <svg width="25" height="25">
+                        <use href="./sprite.svg#icon-construction"></use>
+                    </svg>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
     <script src="./index.js"></script>
 </body>
 </html>

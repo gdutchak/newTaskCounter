@@ -1,8 +1,239 @@
-.icon {
+
+.container_list {
+    position: relative;
+}
+
+.wrapper_calc {
+    display: inline-flex;
+    flex-direction: column;
+    margin: 10px 0 30px;
+
+}
+
+.label_calc:not(:last-child) {
+    margin-bottom: 40px;
+}
+
+.list {
+    display: flex;
+    padding: 0;
+}
+
+.list_item {
+    list-style: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 35px;
+}
+
+
+.list_price {
+    margin: 0;
+    padding: 0;
+    width: 250px;
+    transform: rotate(-90deg);
+    margin-left: 44px;
+}
+
+.list_price--border {
+    border-left: 5px solid black;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+.price {
+    list-style: none;
+    height: 25px;
+    text-align: end;
+}
+
+.price:not(:last-child) {
+    margin: 6px 0 58px;
+}
+
+.price:last-child {
+    margin: 0 0 6px;
+}
+
+
+.title {
     display: inline-block;
-    width: 1em;
-    height: 1em;
-    stroke-width: 0;
-    stroke: currentColor;
-    fill: currentColor;
-  }
+    margin: 0;
+    font-size: 20px;
+}
+
+p {
+    margin: 0;
+}
+
+.wrapper {
+    width: 85px;
+    display: flex;
+    flex-flow: column-reverse;
+    align-items: center;
+}
+
+.wrapperScaleway, .wrapperBunny {
+    position: absolute;
+    top: 42px;
+    left: 25px;
+}
+
+.input {
+    position: relative;
+}
+
+.input::before {
+    display: block;
+    content: "0";
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 20px;
+    left: 0;
+}
+
+.input::after {
+    display: block;
+    content: "1000";
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 20px;
+    right: -2px;
+}
+
+.label {
+    font-size: 10px;
+    display: inline-flex;
+    align-items: center;
+}
+
+input[name="bunny"], input[name="scaleway"] {
+    margin: 0;
+}
+
+
+@media screen and (min-width: 700px) {
+    .container_list {
+        width: 700px;
+    }
+    
+    .wrapper_calc {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: inherit;
+    }
+
+    .label_calc:not(:last-child) {
+        margin-bottom: 0;
+    }
+    
+    .list {
+        width: 140px;
+        display: block;
+        padding: 0 0 0 20px;
+    }
+    
+    .list_item {
+        list-style: none;
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 35px;
+        padding: 0 0 15px;
+    }
+    
+    .list_item:not(:last-child) {
+        margin-bottom: 30px;
+    }
+    
+    .list_price {
+        margin: 0;
+        padding: 0;
+        width: 400px;
+        position: absolute;
+        top: 4px;
+        right: 130px;
+        transform: rotate(0);
+    }
+    
+    .list_price--border {
+        border-left: 5px solid black;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+    }
+    
+    .price {
+        list-style: none;
+        height: 25px;
+    }
+    
+    .price:not(:last-child) {
+        margin: 6px 0 52px;
+    }
+    
+    .price:last-child {
+        margin: 0 0 6px;
+    }
+
+    
+    .title {
+        display: inline-block;
+        margin: 0;
+    }
+    
+    p {
+        margin: 0;
+    }
+    
+    .wrapper {
+        width: 150px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-flow: inherit;
+    }
+    
+    .wrapperScaleway, .wrapperBunny {
+        position: absolute;
+        top: 30px;
+        left: 0;
+    }
+    
+    .input {
+        position: relative;
+    }
+    
+    .input::before {
+        display: block;
+        content: "0";
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        top: 20px;
+        left: 0;
+    }
+    
+    .input::after {
+        display: block;
+        content: "1000";
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        top: 20px;
+        right: -2px;
+    }
+    
+    .label {
+        font-size: 10px;
+        display: inline-flex;
+        align-items: center;
+    }
+    
+    input[name="bunny"], input[name="scaleway"] {
+        margin: 0;
+    }
+}
+
